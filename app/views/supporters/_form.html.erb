@@ -1,0 +1,26 @@
+<%= @supporter.errors.full_messages.join(', ') %>
+<%= form_for @supporter do |sup| %>
+<div>
+  <%= sup.label :title %>
+  <%= sup.text_field :title %>
+</div>
+<div>
+  <%= sup.label :body %>
+  <%= sup.text_area :body %>
+</div>
+<div>
+  <%= sup.label :dept, "Sales" %>
+  <%= sup.radio_button :dept, "Sales", :checked => true %>
+  
+  <%= sup.label :dept, "Marketing" %>
+  <%= sup.radio_button :dept, "Marketig" %>
+  
+  <%= sup.label :dept, "Technical" %>
+  <%= sup.radio_button :dept, "Technical" %>
+</div>
+<div>
+  <%= sup.label :email %>
+  <%= sup.text_field :email %>
+</div>
+<%= sup.submit %>
+<% end %>

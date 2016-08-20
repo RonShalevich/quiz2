@@ -1,0 +1,29 @@
+<h1>All Supporters</h1>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Email</th>
+    <th>Department</th>
+    <th>Message</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @supporters.each do |sup| %>
+  <tr>
+    <td><%= sup.title %></td>
+    <td><%= sup.email %></td>
+    <td><%= sup.dept %></td>
+    <td><%= sup.body %></td>
+    <div>
+    <td><%= link_to "Show", supporter_path(sup) %></td>
+    <td><%= link_to "Edit", edit_supporter_path(sup) %></td>
+    <td><%= link_to "Remove", supporter_path(sup),
+                              method: :delete,
+                              data: { confirm: "Are you sure?" } %></td>
+  </div>
+  </tr>
+<% end %>
+</table>
+<%= paginate @supporters %>
