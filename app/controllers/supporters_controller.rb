@@ -3,9 +3,15 @@ class SupportersController < ApplicationController
   SUPPORTERS_PER_PAGE = 7
 
   def index
-    @supporters = Supporter.order(created_at: :desc).
-                            page(params[:page]).
-                            per(SUPPORTERS_PER_PAGE)
+    if params[:search]
+      @supporters = Supporter.search(params[:search]).order(created_at: :desc).
+                                    page(params[:page]).
+                                    per(SUPPORTERS_PER_PAGE)
+    else
+      @supporters = Supporter.order(created_at: :desc).
+                                    page(params[:page]).
+                                    per(SUPPORTERS_PER_PAGE)
+    end
   end
 
   def new
@@ -50,5 +56,6 @@ class SupportersController < ApplicationController
     supporter.destroy
     redirect_to supporters_path
   end
+
 
 end

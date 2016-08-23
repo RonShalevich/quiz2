@@ -1,7 +1,15 @@
 <h1>Search</h1>
 <h2>search by key word in the desired field</h2>
+
+<%= form_tag(supporters_path, :method => 'get', id: 'seach-form') do %>
 <div>
   <%= label_tag :Search %>
-  <%= text_field_tag :word %>
+  <%= text_field_tag :search, [:search], placeholder: 'Search supporters' %>
   <%= submit_tag :Search %>
 </div>
+<% end %>
+<% if @suppoerters.present? %>
+  <%= render @suppoerters %>
+  <% else %>
+  <p>There are no matches <%= params[:search] %></p>
+<% end %>
